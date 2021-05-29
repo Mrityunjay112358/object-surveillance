@@ -16,11 +16,14 @@ image(video,0,0,500,500);
 text_value = document.getElementById("provided").value;
 if(status != ""){
     objectDetector.detect(video,gotResult);
-    document.getElementById("model").innerHTML="Objects Detected";
+    document.getElementById("model_h3").innerHTML="Objects Detected";
 
     for(i=0; i<objects.length; i++){
         if(objects[i].label == text_value){
 document.getElementById("status").innerHTML=text_value+" is found";
+var synth = window.speechSynthesis;
+var utterThis = new SpeechSynthesisUtterance("Object Mentioned Is Found");
+synth.speak(utterThis);
         }
         else{
             document.getElementById("status").innerHTML=text_value+" not found";
@@ -42,7 +45,7 @@ console.error(error);
 
 function start(){
     objectDetector = ml5.objectDetector("cocossd",modelLoaded);
-    document.getElementById("model").innerHTML="Detecting Objects";
+    document.getElementById("model_h3").innerHTML="Detecting Objects";
 
 }
 
