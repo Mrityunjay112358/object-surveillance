@@ -8,6 +8,8 @@ function setup(){
     canvas.center();
     video = createCapture(VIDEO);
     video.hide();
+   
+
 }
 
 
@@ -24,6 +26,7 @@ document.getElementById("status").innerHTML=text_value+" is found";
 var synth = window.speechSynthesis;
 var utterThis = new SpeechSynthesisUtterance("Object Mentioned Is Found");
 synth.speak(utterThis);
+synth.stop();
         }
         else{
             document.getElementById("status").innerHTML=text_value+" not found";
@@ -32,7 +35,6 @@ synth.speak(utterThis);
     }
 }
 }
-
 function gotResult(error,results){
     if(error){
 console.error(error);
@@ -40,6 +42,7 @@ console.error(error);
     else{
         console.log(results);
         objects=results;
+       
     }
 }
 
